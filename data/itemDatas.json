@@ -1,0 +1,53 @@
+[
+    {
+        "id" : 1,
+        "name" : "치이카와",
+        "img" : "./imgs/point.png",
+        "grade" : "SS",
+        "probability" : 5
+    },
+    {
+        "id" : 2,
+        "name" : "우사기",
+        "img" : "./imgs/point.png",
+        "grade" : "SS",
+        "probability" : 5
+        
+    },
+    {
+        "id" : 3,
+        "name" : "하치와레",
+        "img" : "./imgs/point.png",
+        "grade" : "SS",
+        "probability" : 5
+    },
+    {
+        "id" : 4,
+        "name" : "기사사",
+        "img" : "./imgs/point.png",
+        "grade" : "S",
+        "probability" : 15
+    },
+    {
+        "id" : 5,
+        "name" : "기사사0",
+        "img" : "./imgs/point.png",
+        "grade" : "S",
+        "probability" : 20
+    },
+    {
+        "id" : 6,
+        "name" : "기사사1",
+        "img" : "./imgs/point.png",
+        "grade" : "S",
+        "probability" : 25
+    },
+    {
+        "id" : 7,
+        "name" : "기사사2",
+        "img" : "./imgs/point.png",
+        "grade" : "S",
+        "probability" : 25
+    }
+
+]
