@@ -1,10 +1,17 @@
 [
     {
+        "id" : 0,
+        "name" : "스페셜",
+        "img" : "./imgs/point.png",
+        "grade" : "SSS",
+        "probability" : 1
+    },
+    {
         "id" : 1,
         "name" : "치이카와",
         "img" : "./imgs/point.png",
         "grade" : "SS",
-        "probability" : 5
+        "probability" : 4
     },
     {
         "id" : 2,
