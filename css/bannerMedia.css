@@ -1,9 +1,5 @@
 
 @media screen and (max-width: 920px) {
-    body {
-        background-color: red;
-    }
-
     .slider-container {
         width: 100% !important;
     }
