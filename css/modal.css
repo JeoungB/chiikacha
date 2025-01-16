@@ -1,8 +1,9 @@
 /* 메뉴 */
 .menu-container {
     position: fixed;
+    top: 0;
     width: 100%;
-    height: 200vh;
+    height: 100vh;
     display: none;
     background-color: rgba(50, 50, 50, 0.388);
     z-index: 9;
@@ -91,13 +92,10 @@
   }
 
   .menu-list li {
-    display: flex;
-    align-items: center;
     font-size: 1.5rem;
     color: gray;
     cursor: pointer;
     box-sizing: border-box;
-    padding: 10px;
     margin: 25px 0 0 0;
     border-radius: 10px;
   }
@@ -106,8 +104,19 @@
     background-color: rgb(208, 208, 208);
   }
 
+  .menu-list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
   .menu-list li img {
     width: 20px;
+    height: 20px;
   }
 
   .menu-list li p {

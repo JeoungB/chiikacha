@@ -12,30 +12,14 @@
     <link rel="stylesheet" href="./css/bannerMedia.css" />
     <link rel="stylesheet" href="./css/drawInfo.css" />
     <link rel="stylesheet" href="./css/drawInfoMedia.css" />
-    <link rel="stylesheet" href="./css/menu.css" />
+    <link rel="stylesheet" href="./css/gameInfo.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
 </head>
 
 <body>
     <main class="chiikacha">
         <!-- 헤더 메뉴 -->
-        <header>
-            <div class="header-container">
-                <h1><a href="main.html">chiikacha</a></h1>
-                <ul>
-                    <li class="game-button" role="button" tabindex="0"><a href="gamePage/game.html">게임하기</a></li>
-                    <li role="button" tabindex="0"><a href="./html/myPage/mypage.html">마이페이지</a></li>
-                    <li id="point">
-                        <img src="./imgs/point.png" />
-                        <p>0p</p>
-                    </li>
-                    <div class="menu-trigger" role="button" tabindex="0" href="#">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </ul>
-            </div>
-        </header>
+        <header data-include-path="header.html"></header>
 
         <!-- 슬라이드 배너 -->
         <section class="banner">
@@ -117,42 +101,23 @@
             </ul>
         </section>
 
+        <!-- 게임 정보 -->
+        <section class="game-info">
+            <h2>먼작귀 게임</h2>
+            <ul class="game-list">
+                <li id="card-game"></li>
+                <li id="mole-game"></li>
+            </ul>
+        </section>
+
         <!-- 태플릿, 모바일 모달창 -->
-        <div class="menu-container">
-            <div class="menu" role="dialog">
-                <div class="head">
-                    <h1>chiikacha</h1>
-                    <div class="close" role="button" tabindex="0">X</div>
-                </div>
-
-                <section class="user">
-                    <div class="profile">
-                        <img src="./imgs/profile.png" alt="프로필 이미지">
-                    </div>
-                    <p>테스트</p>
-                </section>
-
-                <ul class="menu-list">
-                    <li role="button" tabindex="0">
-                        <img src="./imgs/menu-컬렉션.png" alt="메뉴 이미지">
-                        <p>먼작귀 컬렉션</p>
-                    </li>
-                    <li role="button" tabindex="0">
-                        <img src="./imgs/menu-게임.png" alt="메뉴 이미지">
-                        <p>게임하기</p>
-                    </li>
-                    <li role="button" tabindex="0">
-                        <img src="./imgs/menu-수정.png" alt="메뉴 이미지">
-                        <p>프로필 수정</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div data-include-path="modal.html"></div>
     </main>
 
     <script type="text/javascript" src="./js/slide.js"></script>
     <script type="text/javascript" src="./js/burgerMenu.js"></script>
     <script type="text/javascript" src="./js/modal.js" defer></script>
+    <script type="text/javascript" src="./js/layout.js" defer></script>
 </body>
 
 </html>

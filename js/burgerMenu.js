@@ -1,7 +1,5 @@
-const $burger = document.querySelector(".menu-trigger");
-
-// 모달 오픈.
-const openModal = () => {
+// 클릭 시 모달 오픈.
+const bugerMenuHandlerClick = () => {
   const $modalMenu = document.querySelector(".menu-container .menu");
   const $modal = document.querySelector(".menu-container");
 
@@ -12,17 +10,9 @@ const openModal = () => {
   }, 200);
 };
 
-// 클릭 시 모달 오픈.
-$burger.addEventListener("click", (e) => {
-  e.preventDefault();
-  openModal();
-});
-
-// 탭(엔터)시 모달 오픈.
-$burger.addEventListener('keydown', (e) => {
-  e.preventDefault();
+// 엔터 시 모달 오픈.
+const bugerMenuHandlerEnter = (e) => {
   if(e.key === 'Enter') {
     openModal();
   }
-});
-
+}

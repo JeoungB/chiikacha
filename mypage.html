@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>치이카와 가챠게임</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/headerMedia.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/mypage.css" />
+</head>
+
+<body>
+    <main class="chiikacha">
+        <!-- 헤더 메뉴 -->
+        <header data-include-path="header.html"></header>
+
+        <!-- 마이 페이지 -->
+        <section class="mypage">
+            <div class="side-bar">
+                <div class="user-info"></div>
+                <p>가챠 내역</p>
+            </div>
+            <div class="collection"></div>
+        </section>
+
+        <!-- 태플릿, 모바일 모달창 -->
+        <div data-include-path="modal.html"></div>
+    </main>
+
+    <script type="text/javascript" src="./js/burgerMenu.js"></script>
+    <script type="text/javascript" src="./js/modal.js" defer></script>
+    <script type="text/javascript" src="./js/layout.js" defer></script>
+</body>
+
+</html>
