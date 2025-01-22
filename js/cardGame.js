@@ -18,51 +18,56 @@ let cardImgs = imgs.concat(imgsClone);
 // 비교 후 다르면 다시 뒤집을(style적용)카드.
 let firstCard = null;
 let secondCard = null;
+// 게임 시작 여부
+let startGame = false;
 
 // 카트 클릭시 뒤집기 이벤트.
 const clickCard = (e) => {
-  let target = e.target;
-  // 카드 2개 뒤집기 전.
-  if (cards.length < 2) {
-    // 클릭한(fron)요소의 부모(li)를 뒤집는다.
-    target.parentElement.style.transform = "rotateY(180deg)";
-    // 클릭한 요소(front)의 다음 요소(back)의 자식 요소(img) : 클릭한 뒷면 이미지.
-    let clickCardSrc = target.nextElementSibling.firstElementChild.src;
-    let clickCardName = clickCardSrc.replace(/^.*\//, "");
+  // 게임 시작이 되면.
+  if (startGame) {
+    let target = e.target;
+    // 카드 2개 뒤집기 전.
+    if (cards.length < 2) {
+      // 클릭한(fron)요소의 부모(li)를 뒤집는다.
+      target.parentElement.style.transform = "rotateY(180deg)";
+      // 클릭한 요소(front)의 다음 요소(back)의 자식 요소(img) : 클릭한 뒷면 이미지.
+      let clickCardSrc = target.nextElementSibling.firstElementChild.src;
+      let clickCardName = clickCardSrc.replace(/^.*\//, "");
 
-    // 뒤집은 카드 비교할 배열.
-    cards.push(clickCardName);
+      // 뒤집은 카드 비교할 배열.
+      cards.push(clickCardName);
 
-    if(!firstCard) {
-      firstCard = target;
-    } else {
-      secondCard = target;
-      cardMatch();
+      if (!firstCard) {
+        firstCard = target;
+      } else {
+        secondCard = target;
+        cardMatch();
+      }
     }
   }
 };
 
 // 카드 비교.
 const cardMatch = () => {
-    // 2개의 카드를 뒤집고 카드가 같다면.
-    if (cards.length === 2 && cards[0] === cards[1]) {
+  // 2개의 카드를 뒤집고 카드가 같다면.
+  if (cards.length === 2 && cards[0] === cards[1]) {
+    firstCard = null;
+    secondCard = null;
+    cards = [];
+    clearCardCount += 1;
+  }
+
+  // 2개의 카드를 뒤집고 카드가 다르다면.
+  if (cards.length === 2 && cards[0] !== cards[1]) {
+    setTimeout(() => {
+      firstCard.parentElement.style.transform = "rotateY(0deg)";
+      secondCard.parentElement.style.transform = "rotateY(0deg)";
+
       firstCard = null;
       secondCard = null;
       cards = [];
-      clearCardCount += 1;
-    }
-  
-    // 2개의 카드를 뒤집고 카드가 다르다면.
-    if (cards.length === 2 && cards[0] !== cards[1]) {
-      setTimeout(() => {
-        firstCard.parentElement.style.transform = "rotateY(0deg)";
-        secondCard.parentElement.style.transform = "rotateY(0deg)";
-
-        firstCard = null;
-        secondCard = null;
-        cards = [];
-      }, 1000);
-    }
+    }, 1000);
+  }
 };
 
 // 카드 배열 섞기.
@@ -100,5 +105,31 @@ const makeCards = () => {
   }
 };
 
+// 게임 알림
+const startAlert = () => {
+  const $alert = document.querySelector(".game-alert");
+  let text = document.createElement("p");
+  text.innerText = "시작!";
+
+  $alert.classList.add('pointer');
+  $alert.appendChild(text);
+  $alert.setAttribute("onclick", "startGameclick(event)");
+  $alert.setAttribute("onkeydown", "startGameEnter(event)");
+};
+
+// 게임 시작 (클릭)
+const startGameclick = (e) => {
+  e.target.style.display = 'none'
+  startGame = true;
+};
+
+// 게임 시작 (엔터)
+const startGameEnter = (e) => {
+  if (e.key === "Enter") {
+    startGameclick();
+  }
+};
+
 shuffleCards();
 makeCards();
+startAlert();
