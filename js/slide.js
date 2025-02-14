@@ -66,11 +66,5 @@ const autoSlide = () => {
     };
 };
 
-// 마우스 올리면 슬라이드 정지.
-const stopSlide = () => {
-    clearTimeout(timer);
-    timer = undefined;
-};
-
 makeClone();
 autoSlide();

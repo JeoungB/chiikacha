@@ -20,6 +20,14 @@ let firstCard = null;
 let secondCard = null;
 // 게임 시작 여부
 let startGame = false;
+// 게임 총 시간
+let seconds = 20;
+// 게임 시작 시간
+let startTime = null;
+// 플레이 시간
+let currentTime = seconds;
+// 게임 포인트(뽑기)
+let gamePoint = 0;
 
 // 카트 클릭시 뒤집기 이벤트.
 const clickCard = (e) => {
@@ -45,7 +53,17 @@ const clickCard = (e) => {
       }
     }
   }
+
+  // 카드 다 뒤집으면 게임 완.
+  if(clearCardCount === 4) {
+    finnishGame();
+  }
 };
+
+// 게임 다시 시작
+const replay = () => {
+  location.reload(true);
+}
 
 // 카드 비교.
 const cardMatch = () => {
@@ -108,25 +126,87 @@ const makeCards = () => {
 // 게임 알림
 const startAlert = () => {
   const $alert = document.querySelector(".game-alert");
-  let text = document.createElement("p");
-  text.innerText = "시작!";
 
-  $alert.classList.add('pointer');
-  $alert.appendChild(text);
-  $alert.setAttribute("onclick", "startGameclick(event)");
-  $alert.setAttribute("onkeydown", "startGameEnter(event)");
+  // 게임 시작 전
+  if(!startGame) {
+    let text = document.createElement("p");
+    text.innerText = "시작!";
+  
+    $alert.classList.add("pointer");
+    $alert.appendChild(text);
+    $alert.setAttribute("onclick", "startGameclick(event)");
+    $alert.setAttribute("onkeydown", "startGameEnter(event)");
+  }
 };
+
+// 게임 종료 알림.
+const finnishGame = () => {
+  const $alert = document.querySelector(".game-alert");
+  startGame = false;
+
+  let text = document.createElement('p');
+  let point = document.createElement('p');
+  let replay = document.createElement('div');
+  let playTime = Math.round(seconds - currentTime);
+  gamePoint = Math.round(currentTime * 10) + (clearCardCount * 5);
+  text.innerText = `${playTime}초 걸리셨습니다.`;
+  point.innerText = `${gamePoint}p 획득!`;
+  replay.innerText = "한번 더";
+  
+  replay.setAttribute('onclick', 'replay()');
+  $alert.classList.remove('pointer');
+  $alert.append(text, point, replay);
+  $alert.setAttribute('onclick', '');
+  $alert.setAttribute('onkeydown', '');
+  $alert.style.transform = 'translate(-50%, 0)';
+
+  // 게임 점수 스토리지에 저장.
+  let localPoint = JSON.parse(window.localStorage.getItem('gamePoint'));
+  localPoint += gamePoint;
+  window.localStorage.setItem('gamePoint', localPoint);
+}
 
 // 게임 시작 (클릭)
 const startGameclick = (e) => {
-  e.target.style.display = 'none'
+  e.target.style.transform = 'translate(-50%, 150%)';
+  setTimeout(() => {
+    const $alert = document.querySelector(".game-alert");
+    $alert.removeChild($alert.firstChild);
+    //e.target.style.display = 'none';
+  }, 1000);
   startGame = true;
+  requestAnimationFrame(timerHandler);
 };
 
 // 게임 시작 (엔터)
 const startGameEnter = (e) => {
   if (e.key === "Enter") {
-    startGameclick();
+    startGameclick(e);
+  }
+};
+
+// 타이머
+const timerHandler = (timestamp) => {
+  const $timeBar = document.querySelector(".cardGame #timer .time-bar");
+  // timestamp : requestAnimationFrame 이 실행된 시간을 의미.
+  if (!startTime) startTime = timestamp;
+  // elapsedTime : 실행된 시간 - 시작 시간 ( 경과시간 )
+  const elapsedTime = (timestamp - startTime) / 1000;
+  // Math.max : 두 인자중 큰 값을 리턴.
+  // 20초에서 -경과시간.
+  currentTime = Math.max(seconds - elapsedTime, 0);
+  // 정확한 경과시간을 구하고 난 뒤 넓이 구하기.
+  let width = (currentTime / seconds) * 100;
+  $timeBar.style.width = `${width}%`;
+
+  if (currentTime > 0 && startGame) {
+    // requestAnimationFrame는 한번만 실행 되서 재귀함수 써서 반복.
+    requestAnimationFrame(timerHandler);
+  }
+
+  // 타임 오버 시 게임 종료.
+  if(currentTime === 0) {
+    finnishGame();
   }
 };
 
