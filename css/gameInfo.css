@@ -6,7 +6,14 @@
     padding: 20px;
     display: flex;
     justify-content: center;
-    background-color: red;
+}
+
+.game-info > div {
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    top: -30px;
+    border-top: 2px solid rgba(169, 169, 169, 0.659);
 }
 
 .game-info h2 {
@@ -16,13 +23,44 @@
 
 .game-info .game-list {
     position: absolute;
-    padding: 50px 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    margin: 55px 0 0 0;
+    background-color: aqua;
 }
 
 #card-game {
     position: relative;
     width: 300px;
-    height: 200px;
-    background-color: antiquewhite;
+    height: 100%;
+    text-align: center;
+    background-color: beige;
 }
-#mole-game {}
+
+#card-game > div {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: blue;
+}
+
+#card-game > div img {
+    position: relative;
+    top: -40px;
+    width: 70%;
+}
+
+#card-game > p {
+    margin: 20px 0 0 0;
+    font-size: 1.5rem;
+}
+
+#mole-game {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    background-color: rgb(220, 245, 224);
+}
