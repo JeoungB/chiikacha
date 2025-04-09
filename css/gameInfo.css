@@ -1,18 +1,21 @@
+/* 게임 정보 */
 .game-info {
     position: relative;
     width: 100%;
     height: 300px;
+    top: -30px;
     box-sizing: border-box;
     padding: 20px;
     display: flex;
     justify-content: center;
 }
 
+/* 분기 선 */
 .game-info > div {
     position: absolute;
     width: 500px;
     height: 30px;
-    top: -30px;
+    top: 0px;
     border-top: 2px solid rgba(169, 169, 169, 0.659);
 }
 
@@ -20,7 +23,7 @@
     font-size: 2rem;
     font-weight: 600;
 }
-
+/* 게임 메뉴 리스트 */
 .game-info .game-list {
     position: absolute;
     display: flex;
@@ -31,36 +34,63 @@
     background-color: aqua;
 }
 
-#card-game {
+/* 게임 메뉴 */
+#card-game, #mole-game {
     position: relative;
     width: 300px;
-    height: 100%;
+    height: 200px;
     text-align: center;
+    box-sizing: border-box;
     background-color: beige;
 }
 
-#card-game > div {
+#card-game {
+    margin-right: 15px;
+}
+
+#mole-game {
+    margin-left: 15px;
+}
+
+#card-game > div,
+#mole-game > div {
     width: 100%;
-    height: 50%;
+    height: 100px;
     overflow: hidden;
     cursor: pointer;
     background-color: blue;
 }
 
-#card-game > div img {
+#card-game > div img,
+#mole-game > div img {
     position: relative;
     top: -40px;
-    width: 70%;
+    width: 210px;
 }
 
-#card-game > p {
+#card-game > p,
+#mole-game > p {
     margin: 20px 0 0 0;
     font-size: 1.5rem;
 }
 
-#mole-game {
-    position: relative;
-    width: 300px;
-    height: 100%;
-    background-color: rgb(220, 245, 224);
+@media only screen and (max-width: 650px) {
+    .game-info .game-list {
+        display: block;
+    }
+
+    #card-game, #mole-game {
+        margin: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    #mole-game {
+        margin-top: 20px;
+    }
+
+    .game-info > div {
+        width: 70%;
+        min-width: 212px;
+    }
 }
