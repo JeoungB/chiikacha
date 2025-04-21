@@ -21,7 +21,7 @@
         <!-- 헤더 메뉴 -->
         <header>
             <div class="header-container">
-                <h1><a href="./index.html">chiikacha</a></h1>
+                <h1><a href="/">chiikacha</a></h1>
                 <ul>
                     <li class="game-button" role="button" tabindex="0" data-link="game-info" onclick="gameMenuView(event)">게임하기</li>
                     <li role="button" tabindex="0"><a href="./mypage.html">마이페이지</a></li>
@@ -124,11 +124,11 @@
             <div></div>
             <h2>먼작귀 게임</h2>
             <ul class="game-list">
-                <li id="card-game">
-                    <div>
-                        <img src="./imgs/SS-치이카와.webp" />
+                <li id="card-game" class="card-game">
+                    <div class="card-game">
+                        <img class="card-game" src="./imgs/SS-치이카와.webp" />
                     </div>
-                    <p>카드게임</p>
+                    <p class="card-game">카드게임</p>
                 </li>
                 <li id="mole-game">
                     <div>
@@ -183,6 +183,7 @@
     <script type="text/javascript" src="./js/burgerMenu.js"></script>
     <script type="text/javascript" src="./js/modal.js" defer></script>
     <script type="text/javascript" src="./js/header.js" defer></script>
+    <script type="text/javascript" src="./js/gameInfo.js" defer></script>
 </body>
 
 </html>

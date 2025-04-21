@@ -13,7 +13,7 @@ const gamePointHandler = () => {
 
 };
 
-// scrollntoView ( 게임하기 )
+// scrollntoView ( 게임하기 버튼 )
 const gameMenuView = (e) => {
     let datasetLink = e.target.dataset.link;
     let $gameInfo = document.getElementById(datasetLink);

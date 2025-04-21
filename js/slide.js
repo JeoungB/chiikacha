@@ -18,6 +18,8 @@ let slideWidth = 200;
 let slideMargin = 10;
 let timer = undefined;
 
+console.log(slideCount)
+
 const makeClone = () => {
     // 슬라이드 뒤에 복사.
     for(let j = 0 ; j < 4 ; j++) {
@@ -34,8 +36,8 @@ const makeClone = () => {
 
 // 초기 슬라이드 위치.
 const setInitialPos = () => {
-    let initialTranslateValue = -slideWidth * slideCount;
-    $slider.style.transform = `translateX(${initialTranslateValue - 35}px)`;
+    let initialTranslateValue = (-slideWidth * slideCount);
+    $slider.style.transform = `translateX(${initialTranslateValue}px)`;
 };
 
 // 슬라이드 움직임 범위.

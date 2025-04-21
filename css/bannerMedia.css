@@ -20,4 +20,8 @@
         width: 50%;
         min-width: 300px;
     }
+
+    .slider {
+        justify-content: center;
+    }
 }

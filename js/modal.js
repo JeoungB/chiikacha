@@ -1,12 +1,12 @@
 // 모달 닫기.
 const closeMoalHandlerClick = () => {
-  const $modalMenu = document.querySelector(".menu-container .menu");
-  const $modal = document.querySelector(".menu-container");
-
   $modalMenu.style.transform = "translate(0, -450px)";
   let time = setTimeout(() => {
     $modal.style.display = "none";
   }, 400);
+
+  document.body.style.overflow = 'auto';
+
 };
 
 const closeMoalHandlerEnter = (e) => {
@@ -14,3 +14,10 @@ const closeMoalHandlerEnter = (e) => {
     closeMoalHandlerClick();
   }
 }
+
+$modal.addEventListener('click', (e) => {
+  if($modal.style.display === "block" && !$modalMenu.contains(e.target)) {
+    closeMoalHandlerClick();
+  }
+});
+

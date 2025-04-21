@@ -48,7 +48,6 @@
     width: 1000px;
     height: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     background-color: transparent;
     z-index: 1;

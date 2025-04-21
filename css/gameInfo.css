@@ -31,17 +31,27 @@
     width: 100%;
     height: 200px;
     margin: 55px 0 0 0;
-    background-color: aqua;
 }
 
 /* 게임 메뉴 */
-#card-game, #mole-game {
+#card-game, 
+#mole-game {
     position: relative;
-    width: 300px;
+    width: 250px;
     height: 200px;
     text-align: center;
     box-sizing: border-box;
-    background-color: beige;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(245, 245, 220, 0);
+    border: 1px solid black;
+    z-index: 2;
+}
+
+#card-game:hover > div img,
+#mole-game:hover > div img {
+    scale: 1.2;
 }
 
 #card-game {
@@ -66,6 +76,7 @@
     position: relative;
     top: -40px;
     width: 210px;
+    transition: all .5s ease-in-out;
 }
 
 #card-game > p,
@@ -91,6 +102,6 @@
 
     .game-info > div {
         width: 70%;
-        min-width: 212px;
+        min-width: 212px ;
     }
 }
