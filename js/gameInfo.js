@@ -1,22 +1,10 @@
 // ------ 게임으로 이동 및 뽑기
-const $gameList = document.querySelectorAll('.game-list li');
 const $drawBtn = document.querySelectorAll('.draw-container button');
 const $drawAlert = document.querySelector('.draw-alert');
 const $drawAlertButtons = document.querySelectorAll('.draw-btn button');
 const $drawAlertMessege = document.querySelector('.draw-alert > p');
 const $drawAlertContainer = document.querySelector('.draw-alert_container');
 let alertState = false;
-
-// 게임 이동 버튼
-$gameList.forEach(gameMoveBtn => {
-    gameMoveBtn.addEventListener('click', e => {
-        let cardLink = `/chiikacha/cardGame.html`;
-        let btn = e.target;
-        if(btn.className === 'card-game') {
-            location.href = cardLink;
-        };
-    });
-});
 
 // 뽑기 버튼
 $drawBtn.forEach(drawBtn => {
