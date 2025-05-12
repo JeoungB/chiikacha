@@ -20,8 +20,4 @@ const gameMenuView = (e) => {
     $gameInfo.scrollIntoView({behavior : "smooth"});
 };
 
-if (location.hostname === 'jeoungb.github.io/chiikacha/') {
-    document.write('<base href="/chiikacha/">');
-  }
-
 gamePointHandler();
