@@ -39,13 +39,14 @@
     margin-top: 10px;
 }
 
-.draw-btn > button {
+.draw-btn button {
     border: none;
     border-radius: 10px;
     width: 100px;
     height: 50px;
     margin: 0 15px 0 15px;
     cursor: pointer;
+    color: black;
 }
 
 #draw {
