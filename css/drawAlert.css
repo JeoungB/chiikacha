@@ -1,0 +1,46 @@
+.draw-alert {
+    position: fixed;
+    bottom: -20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px;
+    height: 130px;
+    border-radius: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    transition:all .3s ease-in;
+}
+
+.draw-alert p {
+    margin-bottom: 20px;
+}
+
+.draw-alert .draw-btn {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.draw-btn > button {
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    margin: 0 15px 0 15px;
+    cursor: pointer;
+}
+
+#draw {
+    background-color: aqua;
+}
+
+#draw:hover {
+    background-color: rgb(97, 250, 250);
+}

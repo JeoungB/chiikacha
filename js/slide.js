@@ -18,8 +18,6 @@ let slideWidth = 200;
 let slideMargin = 10;
 let timer = undefined;
 
-console.log(slideCount)
-
 const makeClone = () => {
     // 슬라이드 뒤에 복사.
     for(let j = 0 ; j < 4 ; j++) {
