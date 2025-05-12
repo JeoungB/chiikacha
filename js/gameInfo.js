@@ -10,7 +10,7 @@ let alertState = false;
 // 게임 이동 버튼
 $gameList.forEach(gameMoveBtn => {
     gameMoveBtn.addEventListener('click', e => {
-        let cardLink = `/cardGame.html`;
+        let cardLink = `/index.html/cardGame.html`;
         let btn = e.target;
         if(btn.className === 'card-game') {
             location.href = cardLink;
