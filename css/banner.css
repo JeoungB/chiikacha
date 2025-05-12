@@ -51,6 +51,7 @@
     align-items: center;
     background-color: transparent;
     z-index: 1;
+    justify-content: center;
 }
 
 /* 슬라이드 애니메이션 */

@@ -20,10 +20,10 @@ let timer = undefined;
 
 const makeClone = () => {
     // 슬라이드 뒤에 복사.
-    for(let j = 0 ; j < 4 ; j++) {
-        for(let i = 0 ; i < slideCount ; i++) {
+    for(let i = 0 ; i < 6 ; i++) {
+        for(let ii = 0 ; ii < slideCount ; ii++) {
             // a.cloneNode() : 요소 복사. ture 넣으면 해당 요소의 자식 요소모두 복사.
-            let cloneSlide = $slide[i].cloneNode(true);
+            let cloneSlide = $slide[ii].cloneNode(true);
             cloneSlide.classList.add("clone");
             $slider.appendChild(cloneSlide);
         };
