@@ -24,6 +24,8 @@ time, mark, audio, video {
 	vertical-align: baseline;
 	text-decoration: none;
 	color: inherit;
+	font-family: 'Arial', sans-serif;
+	color: black;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
