@@ -63,8 +63,9 @@
 
 /* 카드 설명 */
 .item-probability li p {
-    position: absolute;
-    bottom: 15px;
+    position: relative;
+    margin-top: 30px;
+    padding-bottom: 20px;
     left: 50%;
     color: #6a6969;
     transform: translate(-50%, 0);
@@ -75,7 +76,7 @@
     position: relative;
     width: 100px;
     height: 150px;
-    top : 35px;
+    margin-top: 35px;
     left: 50%;
     display: flex;
     justify-content: center;
@@ -84,22 +85,23 @@
 
 .card {
     position: relative;
-    top: 35px;
     width: 100%;
+    height: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top: 35px;
+    gap: 20px;
 }
 
 .card li {
     position: relative;
     width: 100px;
     height: 150px;
-    margin: 0 10px 0 10px;
 }
 
-#ss-card {
+.ss-card {
     border-radius: 20px;
     background: linear-gradient(135deg, rgba(255,254,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,254,0,1) 100%);
 }
