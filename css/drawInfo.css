@@ -1,4 +1,4 @@
-/* draw-info */
+/* 카드 정보보 */
 .draw-info {
     position: relative;
     width: 100%;
@@ -19,7 +19,7 @@
     transform: translate(-50%, 0);
     margin-top: 25px;
     width: 60%;
-    height: 300px;
+    height: auto;
     min-width: 110px;
     background-color: aliceblue;
     border-radius: 20px;

@@ -1,9 +1,8 @@
+/* 태블릿 */
 @media screen and (max-width : 768px) {
-    .item-probability > li {
-        height: auto;
-    }
 }
 
+/* 모바일 */
 @media screen and (max-width : 480px) {
     .item-probability li:nth-child(1) p {
         display: flex;
