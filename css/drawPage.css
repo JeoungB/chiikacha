@@ -1,0 +1,104 @@
+.draw-page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.534);
+    display: none;
+}
+
+.card-pack_container {
+    position: relative;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+    overflow: hidden;
+    --color : aqua;
+    --speed : 4s;
+}
+
+.card-pack_container::after {
+    position: absolute;
+    top: -25%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    content: '';
+    width: 80%;
+    height: 150%;
+    z-index: -1;
+    background-color: var(--color);
+    animation: rotate-border var(--speed) linear infinite;
+}
+
+#card-pack {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 4px;
+    box-shadow: 10px 20px 50px 2px var(--shadowColor, rgba(6, 6, 255, 0.925));
+}
+
+.card-vibration {
+    animation: vibration .1s;
+}
+
+.card-vibration_infinite {
+    animation: vibrationInfinite .1s infinite;
+}
+
+.glowImmpect {
+    animation: glowImmpect 1.2s ease-out forwards;
+}
+
+/* 테두리 회전전 */
+@keyframes rotate-border {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+/* 카드 흔들림 효과 */
+@keyframes vibration {
+    0% { transform: translate(-50%, -50%) rotate(2deg); }
+    100% { transform: translate(-50%, -50%) rotate(-2deg); }
+}
+
+@keyframes vibrationInfinite {
+    0% { transform: translate(-50%, -50%) rotate(.7deg); }
+    100% { transform: translate(-50%, -50%) rotate(-.7deg); }
+}
+
+/* 카드 개봉 연출 */
+@keyframes glowImmpect {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(.7deg) scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-.35deg) scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.7);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-.7deg) scale(1);
+        box-shadow: 0 0 10px rgba(255, 255, 0, 0.4);
+      }
+}

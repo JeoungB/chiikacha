@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/gameInfo.css" />
     <link rel="stylesheet" href="./css/modal.css" />
     <link rel="stylesheet" href="./css/drawAlert.css" />
+    <link rel="stylesheet" href="./css/drawPage.css" />
 </head>
 
 <body>
@@ -146,7 +147,10 @@
 
         <!-- 뽑기 화면 -->
         <section class="draw-page">
-
+            <div class="card-pack_container">
+                <div id="card-pack" onclick="cardClickHandler(event)"></div>
+            </div>
+            <ul class="card-result"></ul>
         </section>  
 
         <!-- 태플릿, 모바일 모달창 -->
@@ -204,7 +208,7 @@
     <script type="text/javascript" src="./js/burgerMenu.js"></script>
     <script type="text/javascript" src="./js/modal.js" defer></script>
     <script type="text/javascript" src="./js/header.js" defer></script>
-    <script type="text/javascript" src="./js/gameInfo.js" defer></script>
+    <script type="text/javascript" src="./js/cardDraw.js" defer></script>
 </body>
 
 </html>

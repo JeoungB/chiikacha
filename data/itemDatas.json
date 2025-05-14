@@ -17,7 +17,7 @@
     },
     {
         "id" : 2,
-        "name" : "우사기기",
+        "name" : "우사기",
         "img" : "./imgs/SS-우사기.png",
         "grade" : "SS",
         "background" : "rgba(255,254,0,1)",
