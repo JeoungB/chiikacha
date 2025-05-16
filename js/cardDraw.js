@@ -74,9 +74,9 @@ const drawAlertCancel = () => {
 
 //-------- 카드 뽑기
 const cardClickHandler = (event) => {
-  event.target.classList.add("card-vibration");
+  $cardPack.classList.add("card-vibration");
   setTimeout(() => {
-    event.target.classList.remove("card-vibration");
+    $cardPack.classList.remove("card-vibration");
   }, 100);
   cardPackClickCount += 1;
 
@@ -88,12 +88,12 @@ const cardClickHandler = (event) => {
   }
 
   if(cardPackClickCount === 3) {
-    event.target.className = 'card-vibration_infinite';
+    $cardPack.className = 'card-vibration_infinite';
   }
   // 마지막 클릭릭
   if(cardPackClickCount === 4) {
     $packContainer.style.setProperty("--color", "transparents");
-    event.target.className = 'glowImmpect';
+    $cardPack.className = 'glowImmpect';
   }
 
   console.log(cardPackClickCount);
@@ -132,15 +132,15 @@ let drawResult = [];
 
         if(cards.grade === "SS") {
             console.log("SS")
-            immpectColor = 'rgb(233, 233, 1)';
-            immpectShadow = 'rgb(204, 204, 2)';
+            immpectColor = 'rgb(255, 255, 0)';
+            immpectShadow = 'rgba(172, 172, 1, 0.99)';
             borderSpeed = '1s'
         }
 
         if(cards.grade === "S") {
             console.log("S")
-            immpectColor = 'rgba(255,177,0,1)';
-            immpectShadow = 'rgb(211, 149, 4)';
+            immpectColor = 'rgb(255, 153, 0)';
+            immpectShadow = 'rgb(179, 125, 0)';
             borderSpeed = '2s'
         }
 
