@@ -20,8 +20,8 @@
     padding: 10px;
     z-index: 1;
     overflow: hidden;
-    --color : aqua;
-    --speed : 4s;
+    --color: aqua;
+    --speed: 4s;
 }
 
 .card-pack_container::after {
@@ -62,7 +62,56 @@
     height: 100%;
 }
 
-/* 애니메이션션 */
+.card-result {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    opacity: 0;
+}
+
+.card-result li {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    height: 250px;
+    margin: 15px;
+    max-width: 173px;
+    border-radius: 10px;
+    background-color: bisque;
+}
+
+.draw-page p {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    width: 150px;
+    justify-items: center;
+    animation: updown 1.5s linear 0s infinite alternate;
+    opacity: 0;
+}
+
+.draw-page p span {
+    position: relative;
+    width: 10px;
+    left: 5px;
+    padding-top: 10px;
+    display: block;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* 애니메이션 */
 .card-vibration {
     animation: vibration .1s;
 }
@@ -75,49 +124,50 @@
     animation: glowImmpect 1.2s ease-out forwards;
 }
 
-.card-result {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+.show-result {
+    animation: showImmpact 1s forwards;
 }
 
-.card-result li {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 15%;
-    height: 250px;
-    max-width: 173px;
-    margin: 15px;
-    border-radius: 10px;
-    background-color: bisque;
+@keyframes showImmpact {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /* 테두리 회전전 */
 @keyframes rotate-border {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
+
 /* 카드 흔들림 효과 */
 @keyframes vibration {
-    0% { transform: translate(-50%, -50%) rotate(2deg); }
-    100% { transform: translate(-50%, -50%) rotate(-2deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(2deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-2deg);
+    }
 }
 
 @keyframes vibrationInfinite {
-    0% { transform: translate(-50%, -50%) rotate(.7deg); }
-    100% { transform: translate(-50%, -50%) rotate(-.7deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(.7deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(-.7deg);
+    }
 }
 
 /* 카드 개봉 연출 */
@@ -131,23 +181,49 @@
         opacity: 1;
         transform: translate(-50%, -50%) rotate(-.35deg) scale(1.05);
         box-shadow: 0 0 30px rgba(255, 255, 0, 0.7);
-      }
+    }
 
-      100% {
+    100% {
         opacity: 0;
         display: none;
         transform: translate(-50%, -50%) rotate(-.7deg) scale(1);
         box-shadow: 0 0 10px rgba(255, 255, 0, 0.4);
-      }
+    }
+}
+
+@keyframes updown {
+    0% {
+        bottom: 20px;
+    }
+
+    100% {
+        bottom: 10px;
+    }
 }
 
 /* ----- 반응형 */
 /* 태블릿 */
 @media screen and (max-width: 768px) {
+    .card-result {
+        top: 40%;
+        transform: translate(0, -50%);
+        height: 50%;
+    }
 
+    .card-result li {
+        width: 130PX;
+        height: 180px;
+    }
 }
 
 /* 모바일 */
 @media screen and (max-width: 480px) {
-    
+    .card-result {
+        top: 40%;
+        transform: translate(0, -50%);
+        height: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+    }
 }

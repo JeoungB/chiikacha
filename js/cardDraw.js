@@ -7,12 +7,14 @@ const $drawAlertContainer = document.querySelector(".draw-alert_container");
 const $drawPage = document.querySelector(".draw-page");
 const $cardPack = document.getElementById("card-pack");
 const $packContainer = document.querySelector(".card-pack_container");
+const $cardResult = document.querySelector(".card-result");
+const $instructions = document.querySelector(".draw-page p");
 let alertState = false;
 let drawNum = 0;
 let cardPackClickCount = 0;
-let immpectColor = null;
-let immpectShadow = null;
-let borderSpeed = null;
+let immpectColor = "rgba(6, 6, 255, 0.925)";
+let immpectShadow = "aqua";
+let borderSpeed = "4s";
 
 // 1회, 5회 뽑기 버튼
 $drawBtn.forEach((drawBtn) => {
@@ -33,6 +35,7 @@ $drawBtn.forEach((drawBtn) => {
 // 뽑기 확인창
 const DrawAlert = (num) => {
   drawNum = num;
+  cardPackClickCount = 0;
   $drawAlertMessege.innerText = `${num}회 뽑기 하시겠습니까?`;
   $drawAlertContainer.style.display = "block";
   setTimeout(() => {
@@ -45,7 +48,6 @@ $drawAlertButtons.forEach((drawBtn) => {
   drawBtn.addEventListener("click", (e) => {
     let btn = e.target;
     if (btn.id === "draw") {
-      console.log("실행", drawNum);
       $drawPage.style.display = "block";
       drawAlertCancel();
       handleDraw();
@@ -72,6 +74,19 @@ const drawAlertCancel = () => {
   }, 500);
 };
 
+// 뽑기 창 닫기 ( 리셋 )
+const closeDrawPage = () => {
+  if (cardPackClickCount > 4) {
+    $drawPage.style.display = "none";
+    $cardResult.classList.remove("show-result");
+    $cardPack.classList.remove("glowImmpect");
+    $cardPack.style.setProperty("--shadowColor", "rgba(6, 6, 255, 0.925)");
+    $packContainer.style.setProperty("--color", "aqua");
+    $packContainer.style.setProperty("--speed", "4s");
+    $instructions.style.opacity = 0;
+  }
+};
+
 //-------- 카드 뽑기
 const cardClickHandler = (event) => {
   $cardPack.classList.add("card-vibration");
@@ -87,21 +102,25 @@ const cardClickHandler = (event) => {
     $packContainer.style.setProperty("--speed", `${borderSpeed}`);
   }
 
-  if(cardPackClickCount === 3) {
-    $cardPack.className = 'card-vibration_infinite';
+  if (cardPackClickCount === 3) {
+    $cardPack.className = "card-vibration_infinite";
   }
-  // 마지막 클릭릭
-  if(cardPackClickCount === 4) {
+  // 마지막 클릭
+  if (cardPackClickCount === 4) {
     $packContainer.style.setProperty("--color", "transparents");
-    $cardPack.className = 'glowImmpect';
+    $cardPack.className = "glowImmpect";
+    setTimeout(() => {
+      $cardResult.classList.add("show-result");
+      $instructions.style.opacity = 1;
+      cardPackClickCount++;
+    }, 1000);
   }
-
   console.log(cardPackClickCount);
 };
 
 // --- 뽑기 데이터 랜덤 가져오기
 const handleDraw = () => {
-let drawResult = [];
+  let drawResult = [];
   fetch(`data/itemDatas.json`)
     .then((res) => res.json())
     .then((data) => {
@@ -123,28 +142,24 @@ let drawResult = [];
           }
         }
       }
-      console.log(drawResult)
+      console.log(drawResult);
       // 뽑은 카드 등급 확인.
-      drawResult.forEach(cards => {
-        if(cards.grade === "SSS") {
-            console.log("SSS")
+      drawResult.forEach((cards) => {
+        if (cards.grade === "SSS") {
+          console.log("SSS");
         }
 
-        if(cards.grade === "SS") {
-            console.log("SS")
-            immpectColor = 'rgb(255, 255, 0)';
-            immpectShadow = 'rgba(172, 172, 1, 0.99)';
-            borderSpeed = '1s'
+        if (cards.grade === "SS") {
+          immpectColor = "rgb(255, 255, 0)";
+          immpectShadow = "rgba(233, 233, 5, 0.99)";
+          borderSpeed = "1s";
         }
 
-        if(cards.grade === "S") {
-            console.log("S")
-            immpectColor = 'rgb(255, 153, 0)';
-            immpectShadow = 'rgb(179, 125, 0)';
-            borderSpeed = '2s'
+        if (cards.grade === "S") {
+          immpectColor = "rgb(255, 153, 0)";
+          immpectShadow = "rgb(179, 125, 0)";
+          borderSpeed = "2s";
         }
-
-
       });
     });
 };
