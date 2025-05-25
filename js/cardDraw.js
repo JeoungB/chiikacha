@@ -9,6 +9,7 @@ const $cardPack = document.getElementById("card-pack");
 const $packContainer = document.querySelector(".card-pack_container");
 const $cardResult = document.querySelector(".card-result");
 const $instructions = document.querySelector(".draw-page p");
+const $gamePointElement = document.getElementById('game-point');
 let alertState = false;
 let drawNum = 0;
 let cardPackClickCount = 0;
@@ -19,15 +20,24 @@ let borderSpeed = "4s";
 // 1회, 5회 뽑기 버튼
 $drawBtn.forEach((drawBtn) => {
   drawBtn.addEventListener("click", (e) => {
+    let point = JSON.parse(localStorage.getItem("gamePoint"));
     let btn = e.target;
     // 1뽑 클릭 시.
-    if (btn.id === "one-draw") {
+    if (btn.id === "one-draw" && point >= 10) {
       DrawAlert(1);
     }
 
+    if (btn.id === "one-draw" && point < 10) {
+      alert("포인트 부족!");
+    }
+
     // 5뽑 클릭 시.
-    if (btn.id === "five-draw") {
+    if (btn.id === "five-draw" && point >= 50) {
       DrawAlert(5);
+    }
+
+    if (btn.id === "five-draw" && point < 50) {
+      alert("포인트 부족!");
     }
   });
 });
@@ -36,8 +46,10 @@ $drawBtn.forEach((drawBtn) => {
 const DrawAlert = (num) => {
   drawNum = num;
   cardPackClickCount = 0;
-  $drawAlertMessege.innerText = `${num}회 뽑기 하시겠습니까?`;
+  $cardResult.replaceChildren();
   $drawAlertContainer.style.display = "block";
+  $drawAlertMessege.innerText = `${num}회 뽑 하시겠습니까?`;
+
   setTimeout(() => {
     $drawAlert.style.bottom = "1%";
   }, 100);
@@ -52,7 +64,6 @@ $drawAlertButtons.forEach((drawBtn) => {
       drawAlertCancel();
       handleDraw();
     }
-
     if (btn.id === "cancel") {
       drawAlertCancel();
     }
@@ -78,6 +89,9 @@ const drawAlertCancel = () => {
 const closeDrawPage = () => {
   if (cardPackClickCount > 4) {
     $drawPage.style.display = "none";
+    immpectColor = "rgba(6, 6, 255, 0.925)";
+    immpectShadow = "aqua";
+    borderSpeed = "4s";
     $cardResult.classList.remove("show-result");
     $cardPack.classList.remove("glowImmpect");
     $cardPack.style.setProperty("--shadowColor", "rgba(6, 6, 255, 0.925)");
@@ -121,6 +135,10 @@ const cardClickHandler = (event) => {
 // --- 뽑기 데이터 랜덤 가져오기
 const handleDraw = () => {
   let drawResult = [];
+  let point = JSON.parse(localStorage.getItem("gamePoint"));
+  point = point - (drawNum * 10);
+  JSON.stringify(localStorage.setItem("gamePoint", point));
+  $gamePointElement.innerText = `${point}p`;
   fetch(`data/itemDatas.json`)
     .then((res) => res.json())
     .then((data) => {
@@ -137,7 +155,17 @@ const handleDraw = () => {
           cumulativeProbability += data[ii].probability;
 
           if (randomValue < cumulativeProbability) {
+            // 뽑은 카드 저장
             drawResult.push(data[ii]);
+            // 뽑은 카드 화면 셋팅
+            const img = document.createElement("img");
+            const cardImg = data[ii].img;
+            const cardColor = data[ii].background;
+            img.src = cardImg;
+            const li = document.createElement("li");
+            li.style.background = cardColor;
+            li.appendChild(img);
+            $cardResult.appendChild(li);
             break;
           }
         }
@@ -147,6 +175,9 @@ const handleDraw = () => {
       drawResult.forEach((cards) => {
         if (cards.grade === "SSS") {
           console.log("SSS");
+          immpectColor = "rgb(140, 0, 255)";
+          immpectShadow = "rgba(143, 3, 185, 0.99)";
+          borderSpeed = ".5s";
         }
 
         if (cards.grade === "SS") {

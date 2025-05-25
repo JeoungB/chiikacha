@@ -108,7 +108,7 @@ h1 {
     position: fixed;
     bottom: 30px;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 150%);
     width: 50vw;
     height: 100px;
     max-width: 514px;
@@ -121,6 +121,16 @@ h1 {
     transition: .5s ease;
     background-color: rgb(230, 242, 246);
     border: 2px solid black;
+}
+
+.game-alert_start {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    left: 50%;
+    bottom: 30px;
+    transform: translate(-50%, 0);
+    font-size: 1.5rem;
 }
 
 .pointer {

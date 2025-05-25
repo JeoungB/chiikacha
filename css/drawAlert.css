@@ -28,6 +28,7 @@
 }
 
 .draw-alert p {
+    position: relative;
     margin-bottom: 20px;
 }
 

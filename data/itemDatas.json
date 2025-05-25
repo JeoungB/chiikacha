@@ -12,7 +12,7 @@
         "name" : "치이카와",
         "img" : "./imgs/SS-치이카와.webp",
         "grade" : "SS",
-        "background" : "rgba(255,254,0,1)",
+        "background" : "linear-gradient(135deg, rgba(255,254,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,254,0,1) 100%)",
         "probability" : 4
     },
     {
@@ -20,7 +20,7 @@
         "name" : "우사기",
         "img" : "./imgs/SS-우사기.png",
         "grade" : "SS",
-        "background" : "rgba(255,254,0,1)",
+        "background" : "linear-gradient(135deg, rgba(255,254,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,254,0,1) 100%)",
         "probability" : 5
         
     },
@@ -29,7 +29,7 @@
         "name" : "하치와레",
         "img" : "./imgs/SS-하치와레.png",
         "grade" : "SS",
-        "background" : "rgba(255,254,0,1)",
+        "background" : "linear-gradient(135deg, rgba(255,254,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,254,0,1) 100%)",
         "probability" : 5
     },
     {
@@ -37,7 +37,7 @@
         "name" : "풍뎅이",
         "img" : "./imgs/S-풍뎅이.png",
         "grade" : "S",
-        "background" : "rgba(255,177,0,1)",
+        "background" : "linear-gradient(135deg, rgba(255,177,0,1) 0%, rgba(255,255,255,1) 50%, rgba(255,177,0,1) 100%)",
         "probability" : 15
     },
     {
@@ -45,7 +45,7 @@
         "name" : "A갑옷씨",
         "img" : "./imgs/A-갑옷씨.webp",
         "grade" : "A",
-        "background" : "rgba(182,225,255,1)",
+        "background" : "linear-gradient(135deg, rgba(182,225,255,1) 0%, rgba(255,255,255,1) 50%, rgba(182,225,255,1) 100%)",
         "probability" : 20
     },
     {
@@ -53,7 +53,7 @@
         "name" : "갑옷씨1",
         "img" : "./imgs/B-갑옷씨.webp",
         "grade" : "B",
-        "background" : "rgba(167,167,167,1)",
+        "background" : "linear-gradient(135deg, rgba(167,167,167,1) 0%, rgba(255,255,255,1) 50%, rgba(167,167,167,1) 100%)",
         "probability" : 25
     },
     {
@@ -61,7 +61,7 @@
         "name" : "갑옷씨2",
         "img" : "./imgs/B-갑옷씨가방.webp",
         "grade" : "B",
-        "background" : "rgba(167,167,167,1)",
+        "background" : "linear-gradient(135deg, rgba(167,167,167,1) 0%, rgba(255,255,255,1) 50%, rgba(167,167,167,1) 100%)",
         "probability" : 25
     }
 

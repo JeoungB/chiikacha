@@ -125,12 +125,12 @@ const makeCards = () => {
 
 // 게임 알림
 const startAlert = () => {
-  const $alert = document.querySelector(".game-alert");
+  const $alert = document.querySelector(".game-alert_start");
 
   // 게임 시작 전
   if(!startGame) {
     let text = document.createElement("p");
-    text.innerText = "시작!";
+    text.innerText = "이곳을 클릭하여 시작!";
   
     $alert.classList.add("pointer");
     $alert.appendChild(text);
@@ -167,14 +167,10 @@ const finnishGame = () => {
 }
 
 // 게임 시작 (클릭)
-const startGameclick = (e) => {
-  e.target.style.transform = 'translate(-50%, 150%)';
-  setTimeout(() => {
-    const $alert = document.querySelector(".game-alert");
-    $alert.removeChild($alert.firstChild);
-    //e.target.style.display = 'none';
-  }, 1000);
+const startGameclick = (event) => {
   startGame = true;
+  console.log(event.target)
+  event.target.style.display = 'none';
   requestAnimationFrame(timerHandler);
 };
 
