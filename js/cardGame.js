@@ -163,7 +163,7 @@ const finnishGame = () => {
   // 게임 점수 스토리지에 저장.
   let localPoint = JSON.parse(window.localStorage.getItem('gamePoint'));
   localPoint += gamePoint;
-  window.localStorage.setItem('gamePoint', localPoint);
+  window.localStorage.setItem('gamePoint', JSON.stringify(localPoint));
 }
 
 // 게임 시작 (클릭)

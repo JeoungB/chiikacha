@@ -16,6 +16,7 @@ let cardPackClickCount = 0;
 let immpectColor = "rgba(6, 6, 255, 0.925)";
 let immpectShadow = "aqua";
 let borderSpeed = "4s";
+let drawResult = [];
 
 // 1회, 5회 뽑기 버튼
 $drawBtn.forEach((drawBtn) => {
@@ -87,7 +88,9 @@ const drawAlertCancel = () => {
 
 // 뽑기 창 닫기 ( 리셋 )
 const closeDrawPage = () => {
+  // 4번째 터치때 잠시 이 함수를 잠그고 다시 풀어주자 연출 후 클릭하면 사라지게게
   if (cardPackClickCount > 4) {
+    cardPackClickCount = 0;
     $drawPage.style.display = "none";
     immpectColor = "rgba(6, 6, 255, 0.925)";
     immpectShadow = "aqua";
@@ -121,6 +124,7 @@ const cardClickHandler = (event) => {
   }
   // 마지막 클릭
   if (cardPackClickCount === 4) {
+
     $packContainer.style.setProperty("--color", "transparents");
     $cardPack.className = "glowImmpect";
     setTimeout(() => {
@@ -129,15 +133,15 @@ const cardClickHandler = (event) => {
       cardPackClickCount++;
     }, 1000);
   }
-  console.log(cardPackClickCount);
+  console.log("카드 클릭 수", cardPackClickCount);
 };
 
 // --- 뽑기 데이터 랜덤 가져오기
 const handleDraw = () => {
-  let drawResult = [];
+  drawResult = [];
   let point = JSON.parse(localStorage.getItem("gamePoint"));
   point = point - (drawNum * 10);
-  JSON.stringify(localStorage.setItem("gamePoint", point));
+  localStorage.setItem("gamePoint", JSON.stringify(point));
   $gamePointElement.innerText = `${point}p`;
   fetch(`data/itemDatas.json`)
     .then((res) => res.json())
@@ -167,10 +171,22 @@ const handleDraw = () => {
             li.appendChild(img);
             $cardResult.appendChild(li);
             break;
-          }
-        }
+          };
+        };
+      };
+
+      // 뽑은카드 스토리지 저장.
+      console.log(drawResult)
+      let myCards = JSON.parse(window.localStorage.getItem("myCards"));
+      if(myCards === null) {
+        window.localStorage.setItem("myCards", JSON.stringify(drawResult));
       }
-      console.log(drawResult);
+      
+      if(myCards.length !== 0) {
+        let newCards = [...myCards, ...drawResult];
+        window.localStorage.setItem("myCards", JSON.stringify(newCards));
+      }
+
       // 뽑은 카드 등급 확인.
       drawResult.forEach((cards) => {
         if (cards.grade === "SSS") {
