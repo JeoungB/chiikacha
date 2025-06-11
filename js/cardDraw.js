@@ -17,6 +17,8 @@ let immpectColor = "rgba(6, 6, 255, 0.925)";
 let immpectShadow = "aqua";
 let borderSpeed = "4s";
 let drawResult = [];
+// 뽑기 결과 나오는 동안 광클 금지.
+let touch = false;
 
 // 1회, 5회 뽑기 버튼
 $drawBtn.forEach((drawBtn) => {
@@ -88,8 +90,7 @@ const drawAlertCancel = () => {
 
 // 뽑기 창 닫기 ( 리셋 )
 const closeDrawPage = () => {
-  // 4번째 터치때 잠시 이 함수를 잠그고 다시 풀어주자 연출 후 클릭하면 사라지게게
-  if (cardPackClickCount > 4) {
+  if (touch && cardPackClickCount > 4) {
     cardPackClickCount = 0;
     $drawPage.style.display = "none";
     immpectColor = "rgba(6, 6, 255, 0.925)";
@@ -131,6 +132,7 @@ const cardClickHandler = (event) => {
       $cardResult.classList.add("show-result");
       $instructions.style.opacity = 1;
       cardPackClickCount++;
+      touch = true;
     }, 1000);
   }
   console.log("카드 클릭 수", cardPackClickCount);
