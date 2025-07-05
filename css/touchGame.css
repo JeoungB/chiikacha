@@ -5,41 +5,76 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(39, 39, 39);
+    background-color: rgb(0, 0, 0);
 }
 
 .touch-game_container h1 a {
+    position: relative;
+    left: 20px;
     text-decoration-line: none;
     color: white;
+}
+
+.touch-game_container #moon {
+    position: absolute;
+    top: 30px;
+    right: 5%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    z-index: 1;
+    box-shadow: 0px 0px 10px 5px white;
+    background-color: rgb(248, 248, 212);
 }
 
 /* game section */
 .touch-game_container .items {
     position: relative;
     width: 100%;
-    height: 70%;
+    height: 80%;
     overflow: hidden;
-    background-color: antiquewhite;
+    background-color: rgb(0, 0, 0);
 }
 
 .touch-game_container .items ul li{
     position: absolute;
     top: 0;
     left: 0;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-color: red;
     list-style-type: none;
-    border-radius: 20px;
-    /* transform: translate(var(--x), var(--y)); */
+    border-radius: 80px;
 }
 
 
-
 /* footer */
-.touch-game_container .footer {
-    position: relative;
+.footer_container {
+    position: absolute;
     width: 100%;
-    height: 15%;
-    background-color: aqua;
+    height: 200px;
+    bottom: 0;
+}
+
+.footer_container .footer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: ellipse(65% 45% at 50% 100%);
+    background-color: rgb(6, 110, 50);
+}
+
+.footer_container img {
+    position: absolute;
+    right: 3%;
+    width: 170px;
+}
+
+.footer_container p {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
 }
